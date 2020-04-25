@@ -19,10 +19,12 @@ let serve = () => {
         reloadDelay: 0, // A delay is sometimes helpful when reloading at the
         server: {       // end of a series of tasks.
             baseDir: [
+                `./temp`,
                 `html`
             ]
         }
     });
+    watch(`html/**/*.html`).on(`change`, reload);
 };
 
 let lintJS = () => {
