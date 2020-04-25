@@ -59,24 +59,9 @@ let serve = () => {
     watch(`dev/js/**/*.js`, series(lintJS, compressJS)).on(`change`, reload);
     watch(`dev/css/**/*.css`, series(compressCSS)).on(`change`, reload);
 };
-exports.serve = series(lintJS, transpileJSForDev, validateHTML, serve);
-
-let copyUnprocessedAssetsForProd = () => {
-    return src([
-        `dev/*.*`,       // Source all files,
-        `dev/**`,        // and all folders,
-        `!dev/html/`,    // but not the HTML folder
-        `!dev/html/*.*`, // or any files in it
-        `!dev/html/**`,  // or any sub folders;
-        `!dev/**/*.js`,  // ignore JS;
-        `!dev/css/**` // and, ignore Sass/CSS.
-    ], {dot: true}).pipe(dest(`prod`));
-};
-exports.copyUnprocessedAssetsForProd = copyUnprocessedAssetsForProd;
-
+exports.serve = series(lintJS, compressJS, validateHTML, serve);
 exports.build = series(
     compressHTML,
     compressCSS,
-    transpileJsForProd,
-    copyUnprocessedAssetsForProd
+    compressJS
 );
