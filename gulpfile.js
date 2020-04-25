@@ -44,9 +44,9 @@ let compressHTML = () => {
 exports.compressHTML = compressHTML;
 
 let compressCSS = () => {
-    return src (`dev/*.css`)
+    return src ([`dev/css/*.css`,`dev/css/**/*.css`])
         .pipe(cssCompressor({collapseWhitespace: true}))
-        .pipe(dest(`css`));
+        .pipe(dest(`prod`));
 };
 exports.compressCSS = compressCSS;
 
