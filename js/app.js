@@ -33,3 +33,12 @@ function calcWater(){
     document.getElementById(`flOzSprouted2`).value = outputBox.value*4;
     document.getElementById(`flOzWhite`).value = outputBox.value*16;
 }
+
+document.getElementById(`input`).addEventListener(`keyup`, calcOil);
+
+var oilBox = document.getElementById(`input`);
+
+function calcOil(){
+    document.getElementById(`ozOil`).value = oilBox.value*0.5;
+    document.getElementById(`ozOil2`).value = oilBox.value*0.5;
+}
