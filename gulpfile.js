@@ -41,7 +41,7 @@ let compressCSS = () => {
         .pipe(cssCompressor({collapseWhitespace: true}))
         .pipe(dest(`css`));
 };
-exports.compressCSS=compressCSS;
+exports.compressCSS = compressCSS;
 
 let serve = () => {
     browserSync({
@@ -55,6 +55,11 @@ let serve = () => {
             ]
         }
     });
-    watch(`html/**/*.html`).on(`change`, reload);
+    watch(`dev/html/**/*.html`, series(validateHTML)).on(`change`, reload);
+    watch(`dev/js/**/*.js`, series(lintJS, transpileJSForDev)).on(`change`, reload);
+    watch(`dev/css/**/*.css`, series(compressCSS)).on(`change`, reload);
+};
+exports.serve = series(lintJS, transpileJSForDev, validateHTML, serve);
+
 };
 exports.serve = serve;
