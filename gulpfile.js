@@ -1,15 +1,16 @@
-const { watch } = require(`gulp`);
+const { watch,src,dest,series } = require(`gulp`);
 const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
 const htmlValidator = require(`gulp-html`);
 const jsLinter = require(`gulp-eslint`);
 const cssLinter = require(`gulp-stylelint`);
+const cssCompressor=require(`gulp-uglifycss`);
 const jsCompressor = require(`gulp-uglify`);
 const babel = require(`gulp-babel`);
 const htmlCompressor = require(`gulp-htmlmin`);
 
 let validateHTML = () => {
-    return src(`html-files/*.html`)
+    return src(`html/*.html`)
         .pipe(htmlValidator());
 };
 
@@ -28,7 +29,7 @@ let serve = () => {
 };
 
 let lintJS = () => {
-    return src(`scripts/*.js`)
+    return src(`js/*.js`)
         .pipe(jsLinter())
         .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
@@ -43,22 +44,33 @@ let lintCSS = () => {
         }));
 };
 
+let compressCSS = () => {
+    return src (`css/*.css`)
+        .pipe(cssCompressor({collapseWhitespace: true}))
+        .pipe(dest(`css`));
+};
+
 let compressJS = () => {
-    return src(`uncompressed-scripts/*.js`)
+    return src(`js/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
-        .pipe(dest(`compressed-scripts`));
+        .pipe(dest(`js`));
 };
 
 let compressHTML = () => {
-    return src(`uncompressed-html/*.html`)
+    return src(`html/*.html`)
         .pipe(htmlCompressor({collapseWhitespace: true}))
-        .pipe(dest(`compressed-html/`));
+        .pipe(dest(`html/`));
 };
 
 exports.compressHTML = compressHTML;
 exports.validateHTML = validateHTML;
 exports.compressJS = compressJS;
+exports.compressCSS=compressCSS;
 exports.lintJS = lintJS;
 exports.lintCSS = lintCSS;
 exports.serve = serve;
+exports.build=series(
+    compressHTML,
+    compressJS
+);
