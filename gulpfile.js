@@ -27,7 +27,7 @@ let compressJS = () => {
         .pipe(jsCompressor())
         .pipe(dest(`prod`));
 };
-exports.transpileJsForProd = transpileJsForProd;
+exports.compressJS = compressJS;
 
 let compressHTML = () => {
     return src([`dev/html/*.html`,`dev/html/**/*.html`])
