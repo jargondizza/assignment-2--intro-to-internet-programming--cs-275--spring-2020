@@ -7,7 +7,6 @@ const htmlCompressor = require(`gulp-htmlmin`);
 const cssCompressor = require(`gulp-uglifycss`);
 const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
-const cssLinter = require(`gulp-stylelint`);
 
 let validateHTML = () => {
     return src(`dev/*.html`)
@@ -58,14 +57,3 @@ let serve = () => {
     watch(`html/**/*.html`).on(`change`, reload);
 };
 exports.serve = serve;
-
-let lintCSS = () => {
-    return src(`css/*.css`)
-        .pipe(cssLinter({
-            failAfterError: true,
-            reporters: [
-                {formatter: `verbose`, console: true}
-            ]
-        }));
-};
-exports.lintCSS = lintCSS;
