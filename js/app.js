@@ -14,3 +14,13 @@ function on_change(el) {
         document.getElementById(`rice2`).style.display = `none`;
     }
 }
+
+document.getElementById(`input`).addEventListener(`keyup`, calcRice);
+
+var inputBox = document.getElementById(`input`);
+
+function calcRice(){
+    document.getElementById(`ozSprouted`).value = inputBox.value*6.53;
+    document.getElementById(`ozWhite`).value = inputBox.value*4.82;
+}
+
