@@ -56,7 +56,7 @@ let serve = () => {
         }
     });
     watch(`dev/html/**/*.html`, series(validateHTML)).on(`change`, reload);
-    watch(`dev/js/**/*.js`, series(lintJS, transpileJSForDev)).on(`change`, reload);
+    watch(`dev/js/**/*.js`, series(lintJS, compressJS)).on(`change`, reload);
     watch(`dev/css/**/*.css`, series(compressCSS)).on(`change`, reload);
 };
 exports.serve = series(lintJS, transpileJSForDev, validateHTML, serve);
