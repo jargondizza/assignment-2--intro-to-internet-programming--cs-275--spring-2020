@@ -12,3 +12,16 @@ header {
   text-align: center;
 }
 
+select {
+  background-color: #b5e6a3;
+  color: #422f0d;
+  border: 5px outset #50a82a;
+  border-radius: 10px;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  margin: 8px;
+  padding: 25px;
+  width: 300px;
+  height: 120px;
+}
+
