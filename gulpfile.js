@@ -73,3 +73,10 @@ let copyUnprocessedAssetsForProd = () => {
     ], {dot: true}).pipe(dest(`prod`));
 };
 exports.copyUnprocessedAssetsForProd = copyUnprocessedAssetsForProd;
+
+exports.build = series(
+    compressHTML,
+    compressCSS,
+    transpileJsForProd,
+    copyUnprocessedAssetsForProd
+);
