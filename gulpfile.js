@@ -21,14 +21,7 @@ let lintJS = () => {
 };
 exports.lintJS = lintJS;
 
-let transpileJSForDev = () => {
-    return src(`dev/*.js`)
-        .pipe(babel())
-        .pipe(dest(`temp/js`));
-};
-exports.transpileJsForDev = transpileJSForDev;
-
-let transpileJsForProd = () => {
+let compressJS = () => {
     return src(`dev/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
