@@ -37,9 +37,9 @@ let transpileJsForProd = () => {
 exports.transpileJsForProd = transpileJsForProd;
 
 let compressHTML = () => {
-    return src(`dev/*.html`)
+    return src([`dev/html/*.html`,`dev/html/**/*.html`])
         .pipe(htmlCompressor({collapseWhitespace: true}))
-        .pipe(dest(`html`));
+        .pipe(dest(`prod`));
 };
 exports.compressHTML = compressHTML;
 
