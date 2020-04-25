@@ -21,13 +21,20 @@ let lintJS = () => {
 };
 exports.lintJS = lintJS;
 
-let compressJS = () => {
+let transpileJSForDev = () => {
+    return src(`dev/*.js`)
+        .pipe(babel())
+        .pipe(dest(`temp/js`));
+};
+exports.transpileJsForDev = transpileJSForDev;
+
+let transpileJsForProd = () => {
     return src(`dev/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
-        .pipe(dest(`js`));
+        .pipe(dest(`prod`));
 };
-exports.compressJS = compressJS;
+exports.transpileJsForProd = transpileJsForProd;
 
 let compressHTML = () => {
     return src(`dev/*.html`)
