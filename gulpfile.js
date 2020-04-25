@@ -12,7 +12,6 @@ let validateHTML = () => {
     return src(`html-files/*.html`)
         .pipe(htmlValidator());
 };
-exports.validateHTML = validateHTML;
 
 let serve = () => {
     browserSync({
@@ -25,14 +24,12 @@ let serve = () => {
         }
     });
 };
-exports.serve = serve;
 
 let lintJS = () => {
     return src(`scripts/*.js`)
         .pipe(jsLinter())
         .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
-exports.lintJS = lintJS;
 
 let lintCSS = () => {
     return src(`css/*.css`)
@@ -43,7 +40,6 @@ let lintCSS = () => {
             ]
         }));
 };
-exports.lintCSS = lintCSS;
 
 let compressJS = () => {
     return src(`uncompressed-scripts/*.js`)
@@ -51,11 +47,16 @@ let compressJS = () => {
         .pipe(jsCompressor())
         .pipe(dest(`compressed-scripts`));
 };
-exports.compressJS = compressJS;
 
 let compressHTML = () => {
     return src(`uncompressed-html/*.html`)
         .pipe(htmlCompressor({collapseWhitespace: true}))
         .pipe(dest(`compressed-html/`));
 };
+
 exports.compressHTML = compressHTML;
+exports.validateHTML = validateHTML;
+exports.compressJS = compressJS;
+exports.lintJS = lintJS;
+exports.lintCSS = lintCSS;
+exports.serve = serve;
