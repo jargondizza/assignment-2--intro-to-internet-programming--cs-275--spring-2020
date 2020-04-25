@@ -76,3 +76,12 @@ p {
   font-size: 15px;
 }
 
+#ozWhite {
+  background-color: #dfe0be;
+  color: #422f0d;
+  width: 100px;
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+}
+
