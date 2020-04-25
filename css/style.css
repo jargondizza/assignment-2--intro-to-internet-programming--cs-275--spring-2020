@@ -6,3 +6,9 @@ body {
   margin-bottom: auto;
 }
 
+header {
+  font-family: Lobster, cursive;
+  font-size: 24px;
+  text-align: center;
+}
+
