@@ -34,3 +34,12 @@ fieldset {
   border-radius: 10px;
 }
 
+#input {
+  background-color: #dfe0be;
+  color: #422f0d;
+  align-self: center;
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+}
+
