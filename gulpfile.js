@@ -15,7 +15,7 @@ let validateHTML = () => {
 exports.validateHTML = validateHTML;
 
 let lintJS = () => {
-    return src(`dev/*.js`)
+    return src([`dev/js/*.js`,`dev/js/**/*.js`])
         .pipe(jsLinter())
         .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
