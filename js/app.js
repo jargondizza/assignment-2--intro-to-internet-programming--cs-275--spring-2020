@@ -24,3 +24,12 @@ function calcRice(){
     document.getElementById(`ozWhite`).value = inputBox.value*4.82;
 }
 
+document.getElementById(`input`).addEventListener(`keyup`, calcWater);
+
+var outputBox = document.getElementById(`input`);
+
+function calcWater(){
+    document.getElementById(`flOzSprouted`).value = outputBox.value*16;
+    document.getElementById(`flOzSprouted2`).value = outputBox.value*4;
+    document.getElementById(`flOzWhite`).value = outputBox.value*16;
+}
