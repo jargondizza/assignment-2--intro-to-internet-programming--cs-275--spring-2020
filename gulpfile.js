@@ -1,4 +1,4 @@
-const {src, dest, watch,series} = require(`gulp`);
+const {src, dest, watch, series} = require(`gulp`);
 const htmlValidator = require(`gulp-html`);
 const jsLinter = require(`gulp-eslint`);
 const jsCompressor = require(`gulp-uglify`);
@@ -49,7 +49,6 @@ let serve = () => {
         reloadDelay: 0, // A delay is sometimes helpful when reloading at the
         server: {       // end of a series of tasks.
             baseDir: [
-                `temp`,
                 `dev`,
                 `dev/html`
             ]
@@ -61,7 +60,7 @@ let serve = () => {
 };
 exports.serve = series(lintJS, compressJS, validateHTML, serve);
 exports.build = series(
+    compressJS,
     compressHTML,
-    compressCSS,
-    compressJS
+    compressCSS
 );
