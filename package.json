@@ -1,7 +1,7 @@
 {
   "name": "assignment-2--intro-to-internet-programming--cs-275--spring-2020",
   "version": "1.0.0",
-  "description": "Assignment #2 ",
+  "description": "Assignment #2",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,18 +18,16 @@
   "homepage": "https://github.com/jargondizza/assignment-2--intro-to-internet-programming--cs-275--spring-2020#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-dev": "^0.3.0",
     "gulp-eslint": "^6.0.0",
     "gulp-html": "^3.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-stylelint": "^13.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-uglifycss": "^1.1.0"
-  }
+  },
+  "dependencies": {}
 }
