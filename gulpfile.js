@@ -1,12 +1,14 @@
 const {src, dest, watch, series} = require(`gulp`);
 const htmlValidator = require(`gulp-html`);
 const jsLinter = require(`gulp-eslint`);
+const cssLinter = require(`gulp-stylelint`);
 const jsCompressor = require(`gulp-uglify`);
 const babel = require(`gulp-babel`);
 const htmlCompressor = require(`gulp-htmlmin`);
 const cssCompressor = require(`gulp-uglifycss`);
 const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
+
 
 let validateHTML = () => {
     return src(`dev/*.html`)
@@ -20,6 +22,17 @@ let lintJS = () => {
         .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
 exports.lintJS = lintJS;
+
+let lintCSS = () => {
+    return src(`temp/css/*.css`)
+        .pipe(cssLinter({
+            failAfterError: true,
+            reporters: [
+                {formatter: `verbose`, console: true}
+            ]
+        }));
+};
+exports.lintCSS = lintCSS;
 
 let compressJS = () => {
     return src(`dev/*.js`)
