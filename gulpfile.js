@@ -78,7 +78,14 @@ let serve = () => {
     watch(`temp/js/**/*.js`, series(lintJS, transpileJSForDev)).on(`change`, reload);
     watch(`temp/css/**/*.css`, series(lintCSS, compressCSS)).on(`change`, reload);
 };
-exports.serve = series(lintJS, compressJS, validateHTML, serve);
+exports.serve = series(
+    lintJS,
+    lintCSS,
+    compressJS,
+    validateHTML,
+    transpileJSForDev,
+    serve
+);
 exports.build = series(
     compressJS,
     compressHTML,
