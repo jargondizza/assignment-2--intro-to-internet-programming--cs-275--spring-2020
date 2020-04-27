@@ -34,6 +34,13 @@ let lintCSS = () => {
 };
 exports.lintCSS = lintCSS;
 
+let transpileJSForDev = () => {
+    return src(`./temp/js/app.js`)
+        .pipe(babel())
+        .pipe(dest(`dev/js`));
+};
+exports.transpileJSForDev = transpileJSForDev;
+
 let compressJS = () => {
     return src(`temp/js/app.js`)
         .pipe(babel())
