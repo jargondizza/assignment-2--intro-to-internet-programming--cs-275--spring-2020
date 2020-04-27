@@ -86,6 +86,12 @@ exports.serve = series(
     transpileJSForDev,
     serve
 );
+exports.dev = series(
+    validateHTML,
+    lintJS,
+    lintCSS,
+    transpileJSForDev
+);
 exports.build = series(
     compressJS,
     compressHTML,
