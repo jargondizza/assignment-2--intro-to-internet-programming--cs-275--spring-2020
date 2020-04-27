@@ -41,7 +41,7 @@ let lintJS = () => {
 exports.lintJS = lintJS;
 
 let lintJSForProd = () => {
-    return src(`temp/js/*.js`)
+    return src(`js/*.js`)
         .pipe(jsLinter())
         .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
