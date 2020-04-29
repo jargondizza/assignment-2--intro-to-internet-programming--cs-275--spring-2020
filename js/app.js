@@ -15,27 +15,27 @@ function on_change() {
     }
 }
 
-document.getElementById(`input`).addEventListener(`keyup`, calcRice);
+document.getElementById(`input`).addEventListener(`keyup`, calculateRice);
 const inputBox = document.getElementById(`input`);
 
-function calcRice() {
+function calculateRice() {
     document.getElementById(`ozSprouted`).value = inputBox.value * 6.53;
     document.getElementById(`ozWhite`).value = inputBox.value * 4.82;
 }
 
-document.getElementById(`input`).addEventListener(`keyup`, calcWater);
+document.getElementById(`input`).addEventListener(`keyup`, calculateWater);
 const outputBox = document.getElementById(`input`);
 
-function calcWater() {
+function calculateWater() {
     document.getElementById(`flOzSprouted`).value = outputBox.value * 16;
     document.getElementById(`flOzSprouted2`).value = outputBox.value * 4;
     document.getElementById(`flOzWhite`).value = outputBox.value * 16;
 }
 
-document.getElementById(`input`).addEventListener(`keyup`, calcOil);
+document.getElementById(`input`).addEventListener(`keyup`, calculateOil);
 const oilBox = document.getElementById(`input`);
 
-function calcOil() {
+function calculateOil() {
     document.getElementById(`ozOil`).value = oilBox.value * 0.5;
     document.getElementById(`ozOil2`).value = oilBox.value * 0.5;
 }
