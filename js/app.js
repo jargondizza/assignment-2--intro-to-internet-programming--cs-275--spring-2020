@@ -1,4 +1,4 @@
-var x = document.getElementById(`getRecipe`);
+const x = document.getElementById(`getRecipe`);
 x.addEventListener(`click`, on_change);
 
 function on_change(el) {
@@ -16,7 +16,7 @@ function on_change(el) {
 }
 
 document.getElementById(`input`).addEventListener(`keyup`, calcRice);
-var inputBox = document.getElementById(`input`);
+const inputBox = document.getElementById(`input`);
 
 function calcRice() {
     document.getElementById(`ozSprouted`).value = inputBox.value * 6.53;
@@ -24,7 +24,7 @@ function calcRice() {
 }
 
 document.getElementById(`input`).addEventListener(`keyup`, calcWater);
-var outputBox = document.getElementById(`input`);
+const outputBox = document.getElementById(`input`);
 
 function calcWater() {
     document.getElementById(`flOzSprouted`).value = outputBox.value * 16;
@@ -33,7 +33,7 @@ function calcWater() {
 }
 
 document.getElementById(`input`).addEventListener(`keyup`, calcOil);
-var oilBox = document.getElementById(`input`);
+const oilBox = document.getElementById(`input`);
 
 function calcOil() {
     document.getElementById(`ozOil`).value = oilBox.value * 0.5;
