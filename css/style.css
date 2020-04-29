@@ -54,6 +54,7 @@ fieldset {
 #rice1,
 #rice2 {
   text-align: center;
+  display: none;
 }
 
 h2 {
